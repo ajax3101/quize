@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+import django_heroku
 
 from django.contrib.messages import constants as messages
 
@@ -53,6 +54,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+     # Simplified static file serving.
+     # https://warehouse.python.org/project/whitenoise/
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'school.urls'
@@ -76,6 +80,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'school.wsgi.application'
+
 
 
 # Database
@@ -140,3 +145,11 @@ MESSAGE_TAGS = {
 # Third party apps configuration
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+# Simplified static file serving.
+# https://warehouse.python.org/project/whitenoise/
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# Activate Django-Heroku.
+django_heroku.settings(locals())
