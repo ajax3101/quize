@@ -141,7 +141,6 @@ MESSAGE_TAGS = {
     messages.ERROR: 'alert-danger',
 }
 
-
 # Third party apps configuration
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
